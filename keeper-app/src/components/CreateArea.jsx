@@ -5,22 +5,30 @@ import Zoom from '@material-ui/core/Zoom';
 
 function CreateArea(props) {
 
-    const [noteTitle, setNoteTitle] = useState('');
-    const [noteContent, setNoteContent] = useState('');
+    // Note component state and handler
+    const [note, setNote] = useState({
+        title: '',
+        content: ''
+    });
+
+    function handleChange(event) {
+        const {name, value} = event.target
+        setNote( prevField => {
+            return {
+                ...prevField,
+                [name]: value
+            }
+        });
+    }
+
+
+    // Stylistic component state and handler
     const [isExpanded, setExpanded] = useState(false);
-
-
-    function handleTitleChange(event) {
-        setNoteTitle(event.target.value);
-    }
-
-    function handleContentChange(event) {
-        setNoteContent(event.target.value);
-    }
 
     function expand() {
         setExpanded(true);
     }
+
 
     return (
         <div>
@@ -28,27 +36,29 @@ function CreateArea(props) {
                 {isExpanded &&
                 <input
                     name='title'
-                    onChange={handleTitleChange}
+                    onChange={handleChange}
                     placeholder='Title'
-                    value={noteTitle}
+                    value={note.title}
                 />
                 }
                 <textarea
                     name='content'
                     onClick={expand}
-                    onChange={handleContentChange}
+                    onChange={handleChange}
                     placeholder='Take a note...'
                     rows={isExpanded ? '3' : '1'}
-                    value={noteContent}
+                    value={note.content}
                 />
                 <Zoom in={isExpanded}>
                     <Fab
                         type='submit'
                         onClick={ (e) => {
                             e.preventDefault();
-                            props.returnNewNote(noteTitle, noteContent);
-                            setNoteTitle('');
-                            setNoteContent('');
+                            props.returnNewNote(note.title, note.content);
+                            setNote({
+                                title: '',
+                                content: ''
+                            });
                         }}>
                         <AddIcon />
                     </Fab>

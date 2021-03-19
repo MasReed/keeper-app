@@ -3,12 +3,11 @@ import CreateArea from './CreateArea.jsx';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import Note from './Note.jsx';
-import TEMPnotes from '../notes.js';
 
 
 function App() {
 
-    const [allNotes, setAllNotes] = useState(TEMPnotes);
+    const [allNotes, setAllNotes] = useState([]);
 
     //append new note to stateful array of notes
     //TODO: Send new note object from create area // refactor
