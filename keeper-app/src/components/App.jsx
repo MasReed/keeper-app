@@ -11,6 +11,7 @@ function App() {
     const [allNotes, setAllNotes] = useState(TEMPnotes);
 
     //append new note to stateful array of notes
+    //TODO: Send new note object from create area // refactor
     function addNote(title, content) {
         setAllNotes( (prevNotes) => {
             return ([
