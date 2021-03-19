@@ -16,6 +16,7 @@ function App() {
             return ([
                 ...prevNotes,
                 {
+                    key: prevNotes.length + 1,
                     title: title,
                     content: content
                 }
