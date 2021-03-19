@@ -5,7 +5,7 @@ import Zoom from '@material-ui/core/Zoom';
 
 function CreateArea(props) {
 
-    // Note component state and handler
+    // Note hook and handler
     const [note, setNote] = useState({
         title: '',
         content: ''
@@ -22,7 +22,7 @@ function CreateArea(props) {
     }
 
 
-    // Stylistic component state and handler
+    // Stylistic hook and handler
     const [isExpanded, setExpanded] = useState(false);
 
     function expand() {
@@ -52,9 +52,9 @@ function CreateArea(props) {
                 <Zoom in={isExpanded}>
                     <Fab
                         type='submit'
-                        onClick={ (e) => {
-                            e.preventDefault();
-                            props.returnNewNote(note.title, note.content);
+                        onClick={ (event) => {
+                            event.preventDefault();
+                            props.returnNewNote(note);
                             setNote({
                                 title: '',
                                 content: ''

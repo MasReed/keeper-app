@@ -10,15 +10,14 @@ function App() {
     const [allNotes, setAllNotes] = useState([]);
 
     //append new note to stateful array of notes
-    //TODO: Send new note object from create area // refactor
-    function addNote(title, content) {
+    function addNote(newNote) {
         setAllNotes( (prevNotes) => {
             return ([
                 ...prevNotes,
                 {
                     key: prevNotes.length + 1,
-                    title: title,
-                    content: content
+                    title: newNote.title,
+                    content: newNote.content
                 }
             ]);
         });
