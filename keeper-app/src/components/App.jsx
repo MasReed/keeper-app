@@ -10,7 +10,7 @@ function App() {
 
     const [allNotes, setAllNotes] = useState(TEMPnotes);
 
-    //update stateful array of notes
+    //append new note to stateful array of notes
     function addNote(title, content) {
         setAllNotes( (prevNotes) => {
             return ([
@@ -24,6 +24,11 @@ function App() {
         });
     }
 
+    function deleteNote(noteId) {
+        const newNotes = allNotes.filter( note => note.key !== noteId );
+        setAllNotes(newNotes);
+    }
+
 
     return (
         <div>
@@ -34,8 +39,10 @@ function App() {
             {allNotes.map(note => (
                 <Note
                     key={note.key}
+                    id={note.key}
                     title={note.title}
                     content={note.content}
+                    returnNoteToDelete={deleteNote}
                 />
             ))}
             <Footer />
