@@ -11,7 +11,7 @@ function App() {
     const [allNotes, setAllNotes] = useState(TEMPnotes);
 
     //update stateful array of notes
-    function getNewNote(title, content) {
+    function addNote(title, content) {
         setAllNotes( (prevNotes) => {
             return ([
                 ...prevNotes,
@@ -20,15 +20,16 @@ function App() {
                     title: title,
                     content: content
                 }
-            ])
+            ]);
         });
     }
+
 
     return (
         <div>
             <Header />
             <CreateArea
-                getNewNote={getNewNote}
+                returnNewNote={addNote}
             />
             {allNotes.map(note => (
                 <Note

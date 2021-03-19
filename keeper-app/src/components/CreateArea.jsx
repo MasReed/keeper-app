@@ -21,7 +21,7 @@ function CreateArea(props) {
                 <button type='submit'
                     onClick={ (e) => {
                         e.preventDefault();
-                        props.getNewNote(noteTitle, noteContent);
+                        props.returnNewNote(noteTitle, noteContent);
                         setNoteTitle('');
                         setNoteContent('');
                     }}
